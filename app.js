@@ -8,9 +8,16 @@ var retrieve = require('./routes/retrieve');
 var submit = require('./routes/submit');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose')
+var MONGO_PORT = 27017;
+var mongoose = require('mongoose').
+   connect("mongodb://localhost:" + MONGO_PORT + "/test"),
+   db = mongoose.connection;
 
-var app     = express();
+db
+  .on('error', console.error.bind(console, 'DB connection error.'))
+  .once('open', console.log.bind(console, 'DB Connection established.'));
+
+var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 1337);

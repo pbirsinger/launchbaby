@@ -8,7 +8,7 @@ var mongoose = require('mongoose')
 
 //Schema
 var WebpageSchema = new Schema({
-   url:         {type : String, trim : true},
+  url:          {type : String, trim : true},
   createdAt:    {type : Date, default: Date.now}
 
 //Validation

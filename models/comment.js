@@ -10,6 +10,8 @@ var mongoose = require('mongoose')
 var CommentSchema = new Schema({
   body:         {type : String, default : '', trim : true},
   user:         {type : Schema.ObjectId, ref: 'User'},
+  selector:     {type : String, default : '', trim : true},
+  page:         {type : String, trim : true},
   createdAt:    {type : Date, default: Date.now}
 
 //Validation

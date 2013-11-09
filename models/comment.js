@@ -19,8 +19,4 @@ var CommentSchema = new Schema({
 //Methods
 //Statics
 
-<<<<<<< HEAD
 module.exports = mongoose.model('Comment', CommentSchema)
-=======
-mongoose.model('Comment', CommentSchema);
->>>>>>> b32b61afbb024a7794aa13d45cd906e69cfb0415

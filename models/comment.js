@@ -1,7 +1,7 @@
 //Module dependencies
 
-var mongoose = require('mongoose')
-    , Schema = mongoose.Schema
+var mongoose    = require('mongoose')
+    , Schema    = mongoose.Schema
 
 //Getters
 //Setters
@@ -19,4 +19,4 @@ var CommentSchema = new Schema({
 //Methods
 //Statics
 
-mongoose.model('Comment', CommentSchema)
+module.exports = mongoose.model('Comment', CommentSchema)

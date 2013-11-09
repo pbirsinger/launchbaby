@@ -8,7 +8,9 @@ var retrieve = require('./routes/retrieve');
 var submit = require('./routes/submit');
 var http = require('http');
 var path = require('path');
+
 var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/launch')
 
 var app     = express();
 

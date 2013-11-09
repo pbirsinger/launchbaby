@@ -1,11 +1,11 @@
-webpage = require('../models/webpage.js');
-mongoose = require('mongoose')
+var webpage = require('../models/webpage.js');
+var comments = require('../models/comment.js');
+var users = require('../models/user.js');
+var mongoose = require('mongoose');
 
 exports.fetch = function(req, res){
-  url = /^\/url\/(.*)/.exec(req.url)[1];
-  // look up comments for url
-  var website = mongoose.model('Webpage');
-  console.log(website);
+  var urll = /^\/url\/(.*)/.exec(req.url)[1];
+  var returnInfo = {url: urll, comments: []};
   res.send({status: 'success',
-            data: {web: url}})
+            data: returnInfo });
 };

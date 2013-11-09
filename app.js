@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -9,8 +8,9 @@ var retrieve = require('./routes/retrieve');
 var submit = require('./routes/submit');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose')
 
-var app = express();
+var app     = express();
 
 // all environments
 app.set('port', process.env.PORT || 1337);

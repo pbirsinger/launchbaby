@@ -1,4 +1,4 @@
-var mongoose    = require('mongoose'),
+var mongoose    = require('mongoose')
     //Comment     = mongoose.model('Comment')
 
 exports.post = function(req, res){

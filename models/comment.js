@@ -13,6 +13,7 @@ var CommentSchema = new Schema({
   selector:     {type : String, default : '', trim : true},
   page:         {type : String, trim : true},
   createdAt:    {type : Date, default: Date.now}
+)};
 
 //Validation
 //Methods

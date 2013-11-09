@@ -10,6 +10,7 @@ var mongoose = require('mongoose')
 var WebpageSchema = new Schema({
   url:          {type : String, trim : true},
   createdAt:    {type : Date, default: Date.now}
+});
 
 //Validation
 //Methods

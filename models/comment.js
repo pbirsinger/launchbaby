@@ -8,9 +8,10 @@ var mongoose    = require('mongoose')
 
 //Schema
 var CommentSchema = new Schema({
-  user:         {type : Schema.ObjectId, ref: 'User'},
+  userEmail:    {type : String, trim: true},
   url:          {type : String, trim : true},
-  selector:     {type : String, default : '', trim : true},
+  paraNum:      {type : Number, trim : true},
+  pageNum:      {type : Number, trim : true},
   body:         {type : String, default : '', trim : true},
   netVotes:     {type: Number, default: 0},
   replyTo:      {type : Schema.ObjectId, ref: 'Comment'},

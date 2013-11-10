@@ -9,6 +9,8 @@ var mongoose = require('mongoose')
 //Schema
 var WebpageSchema = new Schema({
   url:          {type : String, trim : true},
+  selector:     {type : String, trim : true},
+  pgQueryParam: {type: String, trim:true},
   createdAt:    {type : Date, default: Date.now}
 });
 

@@ -5,6 +5,7 @@ var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 
 exports.post = function(req, res){
+  // should also check to see if website url is supported
   User.find({email: req.body['email']}, function(err, user){
     if (err) {
       res.send({status: 'Error looking up user: ' + err});
@@ -13,12 +14,15 @@ exports.post = function(req, res){
       res.send({status: 'No user found with email ' + req.body['email']});
       return;
     }
+    var siteUrl = /^\/url\/(.*)/.exec(req.url)[1]
     var comment = new Comment({
       body: req.body['body'],
       user: user[0]._id,
-      url: /^\/url\/(.*)/.exec(req.url)[1],
+      url: siteUrl,
       replyTo: req.body['replyTo'],
-      selector: req.body['selector']
+      paraNumber: req.body['paraNum'],
+      // find out page number from looking in webpages tables
+      pageNum: 1
     });
     comment.save(function (err, c) {
       if (err) res.send({status: 'Failure saving comment: ' + err});

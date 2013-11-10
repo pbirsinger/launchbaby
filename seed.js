@@ -61,13 +61,31 @@ var comments = [
     userEmail: users[0].email,
     url:  "http://www.nytimes.com/2013/11/10/world/iran-nuclear-talks.html",
     paraNumber: 2,
+    pageNum: 1,
     netVotes: 8
+  }),
+  new Comment({
+    body: "no don't do that",
+    userEmail: users[0].email,
+    url:  "http://www.nytimes.com/2013/11/10/world/iran-nuclear-talks.html",
+    paraNumber: 2,
+    pageNum: 1,
+    netVotes: 10
+  }),
+  new Comment({
+    body: "I'm awesome",
+    userEmail: users[0].email,
+    url:  "http://www.nytimes.com/2013/11/10/world/iran-nuclear-talks.html",
+    paraNumber: 2,
+    pageNum: 1,
+    netVotes: 2
   }),
   new Comment({
     body: "*sharp insight*",
     userEmail: users[1].email,
     url:  "http://www.nytimes.com/2013/11/10/world/iran-nuclear-talks.html",
     paraNumber: 3,
+    pageNum: 2,
     netVotes: 6
   }),
 ]

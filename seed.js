@@ -7,6 +7,7 @@ db
   .once('open', console.log.bind(console, 'DB Connection established.'));
 
 
+// Ideally would not save items if already in db
 var saveItems = function(items, group){
   for (var i = 0; i < items.length; i++) {
     items[i].save(function (err, item){

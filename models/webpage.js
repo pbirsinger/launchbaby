@@ -16,4 +16,4 @@ var WebpageSchema = new Schema({
 //Methods
 //Statics
 
-mongoose.model('Webpage', WebpageSchema)
+mongoose.model('Webpage', WebpageSchema);

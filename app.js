@@ -4,8 +4,7 @@
 
 var express = require('express');
 var routes = require('./routes');
-var retrieve = require('./routes/retrieve');
-var submit = require('./routes/submit');
+var comment = require('./routes/comment');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -41,8 +40,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/url/*', retrieve.fetch);
-app.post('/url/*', submit.post);
+app.get('/url/*', comment.fetch);
+app.post('/url/*', comment.create);
 app.post('/user', user.create);
 
 http.createServer(app).listen(app.get('port'), function(){

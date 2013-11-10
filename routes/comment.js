@@ -1,10 +1,20 @@
 var mongoose = require('mongoose');
 var comments = require('../models/comment.js');
-var users = require('../models/user.js');
 var Comment = mongoose.model('Comment');
+var users = require('../models/user.js');
 var User = mongoose.model('User');
 
-exports.post = function(req, res){
+exports.fetch = function(req, res){
+  // TODO key on only base of url
+  // & instead pass in as parameter in url instead of just appended
+  var pageUrl = /^\/url\/(.*)/.exec(req.url)[1];
+  Comment.find({url: pageUrl}, function (err, comments) {
+      if (err) res.send({status: 'failure'});
+      else res.send({status: 'success', data: comments});
+  })
+};
+
+exports.create = function(req, res){
   // should also check to see if website url is supported
   User.find({email: req.body['email']}, function(err, user){
     if (err) {

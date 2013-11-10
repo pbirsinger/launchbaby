@@ -88,6 +88,39 @@ var comments = [
     pageNum: 2,
     netVotes: 6
   }),
+
+  new Comment({
+    body: "suck a fat one rob",
+    userEmail: users[0].email,
+    url:  "http://www.sfgate.com/news/article/Navy-christens-next-generation-of-aircraft-carrier-4970718.php",
+    paraNumber: 2,
+    pageNum: 1,
+    netVotes: 8
+  }),
+  new Comment({
+    body: "no don't do that",
+    userEmail: users[0].email,
+    url:  "http://www.sfgate.com/news/article/Navy-christens-next-generation-of-aircraft-carrier-4970718.php",
+    paraNumber: 2,
+    pageNum: 1,
+    netVotes: 10
+  }),
+  new Comment({
+    body: "I'm awesome",
+    userEmail: users[0].email,
+    url:  "http://www.sfgate.com/news/article/Navy-christens-next-generation-of-aircraft-carrier-4970718.php",
+    paraNumber: 2,
+    pageNum: 1,
+    netVotes: 2
+  }),
+  new Comment({
+    body: "*sharp insight*",
+    userEmail: users[1].email,
+    url:  "http://www.sfgate.com/news/article/Navy-christens-next-generation-of-aircraft-carrier-4970718.php",
+    paraNumber: 3,
+    pageNum: 2,
+    netVotes: 6
+  }),
 ]
 saveItems(comments, "Comments");
 

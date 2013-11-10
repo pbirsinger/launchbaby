@@ -43,7 +43,7 @@ var webpages = [
   }),
     new Webpage({
     url: "dailycal.org",
-    selector: "div.entry-content p[dir='ltr']"
+    selector: "div.entry-content p"
   }),
     new Webpage({
     url: "sfgate.com",

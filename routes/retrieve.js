@@ -1,11 +1,11 @@
-var webpage = require('../models/webpage.js');
-var comments = require('../models/comment.js');
-var users = require('../models/user.js');
 var mongoose = require('mongoose');
+var comments = require('../models/comment.js');
+var Comment = mongoose.model('Comment');
 
 exports.fetch = function(req, res){
-  var urll = /^\/url\/(.*)/.exec(req.url)[1];
-  var returnInfo = {url: urll, comments: []};
-  res.send({status: 'success',
-            data: returnInfo });
+  var url = /^\/url\/(.*)/.exec(req.url)[1];
+  Comment.find({page: url}, function (err, comments) {
+	  if (err) {res.send({status: 'failure'});}
+      res.send({status: 'success', data: comments});
+  })
 };

@@ -42,8 +42,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/webpage', webpage.index);
-app.get('/url/*', comment.fetch);
-app.post('/url/*', comment.create);
+app.get('/url/:url', comment.fetch);
+app.post('/url/:url', comment.create);
 app.post('/vote', comment.vote);
 app.post('/user', user.create);
 

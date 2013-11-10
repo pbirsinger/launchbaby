@@ -13,7 +13,7 @@ exports.vote = function(req, res){
         res.send({status: 'Failure to vote on comment with ID ' + id});
     }
     Comment.findOne({_id: id}, function(err, comment){
-      if (err || comments.length == 0) fail();
+      if (err || !comment) fail();
       else {
         var direction = req.body['direction'];
         if (direction == "up") comment.netVotes += 1

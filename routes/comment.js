@@ -5,6 +5,27 @@ var users = require('../models/user.js');
 var User = mongoose.model('User');
 var helpers = require('utils');
 
+// XXX ideally only allow users to vote once on comment
+// will require keeping track of who makes what votes ..
+exports.vote = function(req, res){
+    var id = req.body['id'];
+    var fail = function(){
+        res.send({status: 'Failure to vote on comment with ID ' + id});
+    }
+    Comment.findOne({_id: id}, function(err, comment){
+      if (err || comments.length == 0) fail();
+      else {
+        var direction = req.body['direction'];
+        if (direction == "up") comment.netVotes += 1
+        else if (direction == "down") comment.netVotes -= 1
+        comment.save(function (err, c) {
+          if (err || direction == undefined) fail();
+          else res.send({status: 'Successfully ' + direction +'-voted on comment with ID ' + id});
+        });
+      };
+    });
+};
+
 exports.fetch = function(req, res){
   // pass in as parameter in url instead of just appending?
   var pageUrl = /^\/url\/(.*)/.exec(req.url)[1];

@@ -44,6 +44,7 @@ app.get('/', routes.index);
 app.get('/webpage', webpage.index);
 app.get('/url/*', comment.fetch);
 app.post('/url/*', comment.create);
+app.post('/vote', comment.vote);
 app.post('/user', user.create);
 
 http.createServer(app).listen(app.get('port'), function(){

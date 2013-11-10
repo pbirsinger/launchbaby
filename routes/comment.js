@@ -3,12 +3,14 @@ var comments = require('../models/comment.js');
 var Comment = mongoose.model('Comment');
 var users = require('../models/user.js');
 var User = mongoose.model('User');
+var helpers = require('utils');
 
 exports.fetch = function(req, res){
-  // TODO key on only base of url
-  // & instead pass in as parameter in url instead of just appended
+  // pass in as parameter in url instead of just appending?
   var pageUrl = /^\/url\/(.*)/.exec(req.url)[1];
-  Comment.find({url: pageUrl}, function (err, comments) {
+  var sanUrl = helpers.sanitizeUrl(pageUrl);
+  console.log("san url is; " + sanUrl)
+  Comment.find({url: sanUrl}, function (err, comments) {
       if (err) res.send({status: 'failure'});
       else res.send({status: 'success', data: comments});
   })
@@ -25,14 +27,16 @@ exports.create = function(req, res){
       return;
     }
     var siteUrl = /^\/url\/(.*)/.exec(req.url)[1]
+    var sanUrl = helpers.sanitizeUrl(siteUrl);
+    var pgNum =helpers.parsePageNum(siteUrl)
+    console.log("pg num is:" + pgNum)
     var comment = new Comment({
       body: req.body['body'],
       user: user[0]._id,
-      url: siteUrl,
+      url: sanUrl,
       replyTo: req.body['replyTo'],
       paraNumber: req.body['paraNum'],
-      // find out page number from looking in webpages tables
-      pageNum: 1
+      pageNum: pgNum
     });
     comment.save(function (err, c) {
       if (err) res.send({status: 'Failure saving comment: ' + err});

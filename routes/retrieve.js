@@ -7,7 +7,7 @@ exports.fetch = function(req, res){
   // & instead pass in as parameter in url instead of just appended
   var url = /^\/url\/(.*)/.exec(req.url)[1];
   Comment.find({page: url}, function (err, comments) {
-      if (err) {res.send({status: 'failure'});}
-      res.send({status: 'success', data: comments});
+      if (err) res.send({status: 'failure'});
+      else res.send({status: 'success', data: comments});
   })
 };

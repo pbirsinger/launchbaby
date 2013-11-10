@@ -17,7 +17,8 @@ exports.post = function(req, res){
       body: req.body['body'],
       user: user[0]._id,
       url: /^\/url\/(.*)/.exec(req.url)[1],
-      replyTo: req.body['replyTo']
+      replyTo: req.body['replyTo'],
+      selector: req.body['selector']
     });
     comment.save(function (err, c) {
       if (err) res.send({status: 'Failure saving comment: ' + err});

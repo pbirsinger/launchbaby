@@ -9,3 +9,6 @@ curl -d '{"name": ["rob"], "email": ["balickileaky"]}' -H 'content-type:applicat
 
 echo "\nFetching webpages list......................................"
 curl localhost:1337/webpage
+
+echo "\nVoting on a comment.........................................."
+curl -d '{"direction": ["up"], "id":["527ffabf153f730000000009"]}' -H 'content-type:application/json' http://localhost:1337/vote

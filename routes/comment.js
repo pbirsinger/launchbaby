@@ -28,7 +28,8 @@ exports.vote = function(req, res){
 
 exports.fetch = function(req, res){
   // pass in as parameter in url instead of just appending?
-  var sanUrl = helpers.sanitizeUrl(req.params.url);
+  var pageUrl = /^\/url\/(.*)/.exec(req.url)[1];
+  var sanUrl = helpers.sanitizeUrl(pageUrl);
   Comment.find({url: sanUrl}, function (err, comments) {
       if (err) res.send({status: 'failure'});
       else res.send({status: 'success', data: comments});
@@ -43,8 +44,9 @@ exports.create = function(req, res){
       res.send({status: 'Failure adding comment; unable to find user with email ' + userEmail});
       return;
     }
-    var sanUrl = helpers.sanitizeUrl(req.params.url);
-    var pgNum = helpers.parsePageNum(req.params.url)
+    var siteUrl = /^\/url\/(.*)/.exec(req.url)[1]
+    var sanUrl = helpers.sanitizeUrl(siteUrl);
+    var pgNum = helpers.parsePageNum(siteUrl)
     var comment = new Comment({
       body: req.body['body'],
       user: user._id,

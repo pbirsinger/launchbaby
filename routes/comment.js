@@ -36,6 +36,13 @@ exports.fetch = function(req, res){
   })
 };
 
+exports.delete = function(req, res){
+  Comment.remove({ _id: req.params.id}, function(err) {
+    if (err) res.send({status: 'Failure deleting comment with id ' + req.params.id +'.'});
+    else res.send({status: 'Success deleting comment with id ' + req.params.id + '.', data: comments});
+  });
+};
+
 exports.create = function(req, res){
   // should also check to see if website url is supported
   var userEmail = req.body['email'];

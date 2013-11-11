@@ -12,3 +12,7 @@ curl localhost:1337/webpage
 
 echo "\nVoting on a comment.........................................."
 curl -d '{"direction": ["up"], "id":["52801edc7d1a590000000009"]}' -H 'content-type:application/json' http://localhost:1337/vote
+
+echo "\nDeleting a comment.........................................."
+# need to query db to find id for comment just created to insert here
+#curl -X "DELETE" localhost:1337/52802894b003150000000003
